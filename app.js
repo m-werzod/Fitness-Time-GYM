@@ -276,8 +276,12 @@ document.addEventListener("keydown", (e) => {
 // Hero triggers (unique IDs)
 const watchHeroBtn = $("#watchHeroBtn");
 const watchHeroPlay = $("#watchHeroPlay");
-if (watchHeroBtn) watchHeroBtn.addEventListener("click", () => openVideo("./assets/hero.mp4"));
-if (watchHeroPlay) watchHeroPlay.addEventListener("click", () => openVideo("./assets/hero.mp4"));
+if (watchHeroBtn) {
+  watchHeroBtn.addEventListener("click", () => openVideo(watchHeroBtn.dataset.video));
+}
+if (watchHeroPlay) {
+  watchHeroPlay.addEventListener("click", () => openVideo(watchHeroPlay.dataset.video));
+}
 
 // Gallery buttons
 $$(".mediaCard").forEach((btn) => {
@@ -387,3 +391,22 @@ if (heroStats && statEls.length) {
   );
   observer.observe(heroStats);
 }
+
+// ---------- Preview videos (hero + gallery) ----------
+const previewVideos = Array.from(document.querySelectorAll(".mediaPreview, #heroVideo"));
+previewVideos.forEach((video) => {
+  video.muted = true;
+  video.loop = true;
+  video.playsInline = true;
+  video.preload = "auto";
+
+  const tryPlay = () => {
+    if (video.readyState >= 2) {
+      video.play().catch(() => {});
+    }
+  };
+
+  video.addEventListener("loadeddata", tryPlay);
+  video.addEventListener("canplay", tryPlay);
+  tryPlay();
+});

@@ -72,6 +72,9 @@
   <!-- Hero (preview, not fullscreen video) -->
   <section class="hero">
     <div class="heroPreview" aria-hidden="true"></div>
+    <video class="heroVideo" id="heroVideo" autoplay muted loop playsinline preload="metadata">
+      <source src="./assets/1.mp4" type="video/mp4" />
+    </video>
     <div class="heroOverlay" aria-hidden="true"></div>
 
     <div class="container heroContent">
@@ -83,22 +86,22 @@
 
       <div class="heroCtas">
         <a class="btn btnPrimary" href="#pricing">Tariflarni ko‘rish</a>
-        <button class="btn btnGhost" id="watchHeroBtn" type="button">Zal videosi</button>
+        <button class="btn btnGhost" id="watchHeroBtn" type="button" data-video="./assets/1.mp4">Zal videosi</button>
       </div>
 
-      <button class="heroPlay" id="watchHeroPlay" type="button" aria-label="Zal videosini ko'rish">▶</button>
+      <button class="heroPlay" id="watchHeroPlay" type="button" data-video="./assets/1.mp4" aria-label="Zal videosini ko'rish">▶</button>
 
       <div class="heroStats">
         <div class="stat">
-          <div class="statNum" data-count="1200">0</div>
+          <div class="statNum" data-count="500">0</div>
           <div class="statLabel">Mijoz</div>
         </div>
         <div class="stat">
-          <div class="statNum" data-count="18">0</div>
+          <div class="statNum" data-count="5">0</div>
           <div class="statLabel">Trener</div>
         </div>
         <div class="stat">
-          <div class="statNum" data-count="24">0</div>
+          <div class="statNum" data-count="17">0</div>
           <div class="statLabel">Soat/kun</div>
         </div>
       </div>
@@ -216,12 +219,18 @@
       </div>
 
       <div class="galleryGrid">
-        <button class="mediaCard" data-video="./assets/hero.mp4" type="button">
+        <button class="mediaCard" data-video="./assets/1.mp4" type="button">
+          <video class="mediaPreview" autoplay muted loop playsinline preload="auto">
+            <source src="./assets/1.mp4" type="video/mp4" />
+          </video>
           <span class="play">▶</span>
           <span class="mediaTitle">Zal tour #1</span>
         </button>
 
-        <button class="mediaCard" data-video="./assets/v1.mp4" type="button">
+        <button class="mediaCard" data-video="./assets/2.mp4" type="button">
+          <video class="mediaPreview" autoplay muted loop playsinline preload="auto">
+            <source src="./assets/2.mp4" type="video/mp4" />
+          </video>
           <span class="play">▶</span>
           <span class="mediaTitle">Mashg‘ulot #2</span>
         </button>
@@ -307,6 +316,7 @@
   <footer class="footer">
     <div class="container footerInner">
       <div class="muted">© <span id="year"></span> Fitness Time. All rights reserved.</div>
+      <p class="smth">Manzilimiz: Chilonzor 9-kvartal</p>
       <button class="btn btnGhost" id="toTop" type="button">↑ Tepaga</button>
     </div>
   </footer>
